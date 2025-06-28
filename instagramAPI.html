@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram API メトリクス・情報一覧（改訂版）</title>
+    <!-- Tailwind CSSを読み込み -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter & Noto Sans JP) を読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 日本語はNoto Sans JP、英数字はInterを優先するフォント設定 */
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* codeタグのスタイルを定義 */
+        code {
+            font-family: 'Inter', monospace;
+            background-color: #eef2ff; /* bg-indigo-50 */
+            color: #4338ca; /* text-indigo-800 */
+            padding: 0.2em 0.4em;
+            margin: 0;
+            font-size: 0.9em;
+            border-radius: 0.375rem; /* rounded-md */
+        }
+        /* テーブルのレスポンシブ対応 */
+        .table-container {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+        <!-- ヘッダー -->
+        <header class="mb-10 text-center">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Instagram API メトリクス・情報一覧</h1>
+            <p class="mt-3 text-lg text-gray-600">APIで取得可能な主要な指標・情報の分類と説明（2025年6月時点）</p>
+        </header>
+
+        <main class="space-y-12">
+            <!-- 1. メディア（投稿）のインサイト -->
+            <section id="media-insights" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-indigo-500 pb-3 mb-6">
+                    <span class="bg-indigo-500 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-lg">1</span>
+                    メディア（投稿）のインサイト
+                </h2>
+                <p class="mb-6 text-gray-600">特定の投稿のパフォーマンスを測るための分析指標です。</p>
+                <div class="table-container">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">APIメトリクス名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">日本語名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">内容・説明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>views</code></td>
+                                <td class="px-6 py-4 font-semibold">表示・再生数</td>
+                                <td class="px-6 py-4">【新統一指標】コンテンツが表示または再生された合計回数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>reach</code></td>
+                                <td class="px-6 py-4 font-semibold">リーチ数</td>
+                                <td class="px-6 py-4">投稿を閲覧したユニークアカウントの数。</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>likes</code></td>
+                                <td class="px-6 py-4 font-semibold">いいね数</td>
+                                <td class="px-6 py-4">投稿に「いいね！」がされた数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>comments</code></td>
+                                <td class="px-6 py-4 font-semibold">コメント数</td>
+                                <td class="px-6 py-4">投稿にコメントがされた数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>saved</code></td>
+                                <td class="px-6 py-4 font-semibold">保存数</td>
+                                <td class="px-6 py-4">投稿が保存された数。エンゲージメントの中でも特に重要な指標。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>shares</code></td>
+                                <td class="px-6 py-4 font-semibold">シェア数</td>
+                                <td class="px-6 py-4">ストーリーズでの再シェアやDMでの送信など、投稿がシェアされた数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>replies</code></td>
+                                <td class="px-6 py-4 font-semibold">返信数</td>
+                                <td class="px-6 py-4">ストーリーズに対して返信（DM）が送られた数。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 2. ユーザー（アカウント）のインサイト -->
+            <section id="user-insights" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-green-500 pb-3 mb-6">
+                    <span class="bg-green-500 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-lg">2</span>
+                    ユーザー（アカウント）のインサイト
+                </h2>
+                <p class="mb-6 text-gray-600">アカウント全体のパフォーマンスやフォロワーの属性を測るための分析指標です。</p>
+                <div class="table-container">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">APIメトリクス名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">日本語名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">内容・説明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>views</code></td>
+                                <td class="px-6 py-4 font-semibold">合計表示・再生数</td>
+                                <td class="px-6 py-4">【新統一指標】アカウントの全コンテンツが表示・再生された合計回数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>reach</code></td>
+                                <td class="px-6 py-4 font-semibold">合計リーチ数</td>
+                                <td class="px-6 py-4">アカウントのコンテンツを閲覧したユニークアカウントの総数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>profile_views</code></td>
+                                <td class="px-6 py-4 font-semibold">プロフィールビュー数</td>
+                                <td class="px-6 py-4">プロフィール画面が表示された合計回数。</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>follower_count</code></td>
+                                <td class="px-6 py-4 font-semibold">フォロワー増減数</td>
+                                <td class="px-6 py-4">指定した期間におけるフォロワーの純増減数。</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>website_clicks</code></td>
+                                <td class="px-6 py-4 font-semibold">ウェブサイトクリック数</td>
+                                <td class="px-6 py-4">プロフィールに設定したウェブサイトのURLがクリックされた数。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>audience_gender_age</code></td>
+                                <td class="px-6 py-4 font-semibold">性別・年齢層</td>
+                                <td class="px-6 py-4">フォロワーの性別と年齢層の分布。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- 3. アカウントの基本情報 -->
+            <section id="basic-info" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-yellow-500 pb-3 mb-6">
+                    <span class="bg-yellow-500 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-lg">3</span>
+                    アカウントの基本情報
+                </h2>
+                <p class="mb-6 text-gray-600">アカウントの静的な（期間で変動しない）プロフィールデータです。</p>
+                <div class="table-container">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-100">
+                             <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">APIフィールド名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">日本語名</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>username</code></td>
+                                <td class="px-6 py-4 font-semibold">ユーザーネーム</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>name</code></td>
+                                <td class="px-6 py-4 font-semibold">名前</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>biography</code></td>
+                                <td class="px-6 py-4 font-semibold">自己紹介文</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>followers_count</code></td>
+                                <td class="px-6 py-4 font-semibold">総フォロワー数</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>follows_count</code></td>
+                                <td class="px-6 py-4 font-semibold">総フォロー数</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>media_count</code></td>
+                                <td class="px-6 py-4 font-semibold">投稿数</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>profile_picture_url</code></td>
+                                <td class="px-6 py-4 font-semibold">プロフィール写真URL</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+             <!-- 4. メディアの基本情報（画像・動画データ） -->
+            <section id="media-info" class="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-900 border-b-2 border-pink-500 pb-3 mb-6">
+                    <span class="bg-pink-500 text-white rounded-full w-8 h-8 inline-flex items-center justify-center mr-3 text-lg">4</span>
+                    メディアの基本情報（画像・動画データ）
+                </h2>
+                <p class="mb-6 text-gray-600">投稿の画像URLやキャプションなど、コンテンツそのもののデータです。</p>
+                <div class="table-container">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-100">
+                             <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">APIフィールド名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">日本語名</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-600 uppercase tracking-wider">内容・説明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>media_url</code></td>
+                                <td class="px-6 py-4 font-semibold">画像/動画URL</td>
+                                <td class="px-6 py-4">投稿メディアの直接URL。**ただしURLは一時的なものです。**</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>media_type</code></td>
+                                <td class="px-6 py-4 font-semibold">メディア種別</td>
+                                <td class="px-6 py-4"><code>IMAGE</code>, <code>VIDEO</code>, <code>CAROUSEL_ALBUM</code> のいずれか。</td>
+                            </tr>
+                             <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>thumbnail_url</code></td>
+                                <td class="px-6 py-4 font-semibold">サムネイルURL</td>
+                                <td class="px-6 py-4">動画のカバー画像のURL。<code>VIDEO</code>タイプのみ。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>permalink</code></td>
+                                <td class="px-6 py-4 font-semibold">固定リンク</td>
+                                <td class="px-6 py-4">Instagram上での投稿ページのURL。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>caption</code></td>
+                                <td class="px-6 py-4 font-semibold">キャプション</td>
+                                <td class="px-6 py-4">投稿に付けられた文章。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>timestamp</code></td>
+                                <td class="px-6 py-4 font-semibold">投稿日時</td>
+                                <td class="px-6 py-4">投稿が公開された日時。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap"><code>children</code></td>
+                                <td class="px-6 py-4 font-semibold">子要素</td>
+                                <td class="px-6 py-4">カルーセル投稿内の各画像・動画のデータ。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- フッター -->
+        <footer class="text-center mt-12 py-6 border-t border-gray-200">
+            <p class="text-sm text-gray-500">最終更新日: 2025年6月29日</p>
+        </footer>
+    </div>
+
+</body>
+</html>
